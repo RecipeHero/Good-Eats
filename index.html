@@ -493,6 +493,17 @@
     color: var(--walnut-soft);
   }
 
+  .ing-link{
+    color: var(--rust);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+  }
+
+  .ing-link:hover{
+    text-decoration-color: var(--rust);
+  }
+
   .steps{ list-style: none; margin: 0; padding: 0; counter-reset: step; }
 
   .steps li{
@@ -1064,6 +1075,69 @@ const RECIPES = [
       "In a large bowl or dish, layer 2 cups of the pudding mixture, then 1/2 cup cookie crumbs and 1/4 cup chopped cookies. Repeat layers, ending with cookie crumbs on top.",
       "Add gummy worms if desired. Chill overnight before serving."
     ]
+  },
+  {
+    id: "oven-roasted-beets",
+    title: "Oven-roasted Beets",
+    category: "Side Dishes",
+    time: "1 hr 15 min",
+    servings: "Any amount",
+    ingredients: [
+      "Beets, any quantity"
+    ],
+    steps: [
+      "Preheat the oven to 400°F (200°C) and line a rimmed baking sheet with foil.",
+      "Trim the leafy tops, leaving about an inch if present, then scrub the beets clean.",
+      "Wrap each beet loosely in foil, unpeeled, and place on the baking sheet.",
+      "Roast until a skewer slides easily to the center, about 1 hour for medium beets — check smaller ones starting around 30 minutes.",
+      "Once cool enough to handle, trim the ends and rub off the skins with a paper towel or gloves — they should slip off easily.",
+      "Cut into wedges, slices, or dice as your recipe calls for."
+    ]
+  },
+  {
+    id: "pickled-banana-peppers",
+    title: "Pickled Banana Peppers",
+    category: "Snacks, Sauces, and More",
+    time: "20 min + 1 week to marinate",
+    servings: "2 pint jars",
+    ingredients: [
+      "2 cups white vinegar",
+      "2 cups apple cider vinegar",
+      "1 cup sugar",
+      "1 tsp mustard seed",
+      "1 tsp celery seed",
+      "1 lb banana peppers, tops removed and sliced into rings",
+      "2 pint mason jars"
+    ],
+    steps: [
+      "Divide the sliced peppers between the two jars.",
+      "Bring the vinegars, sugar, mustard seed, and celery seed to a boil in a pot. Let cool to room temperature — placing the pot in a cold water bath in the sink speeds this up.",
+      "Pour the brine over the peppers, filling to within 1/2 inch of the jar tops.",
+      "Wipe the rims, seal with lids, and refrigerate once cooled. Keep refrigerated at all times.",
+      "Let marinate at least 1 week before eating."
+    ]
+  },
+  {
+    id: "pickled-beets",
+    title: "Pickled Beets",
+    category: "Snacks, Sauces, and More",
+    time: "20 min + chilling",
+    servings: "1 quart jar",
+    ingredients: [
+      "4 medium [[oven-roasted-beets|Oven-roasted Beets]], quartered",
+      "1 cup apple cider vinegar",
+      "1 cup water",
+      "1/3 cup sugar",
+      "1 tsp coarse salt",
+      "1/4 tsp mustard seeds",
+      "5 black peppercorns"
+    ],
+    steps: [
+      "Combine the vinegar, water, sugar, and salt in a saucepan. Bring to a boil, stirring until the sugar dissolves, then simmer briefly and let cool — placing the pot in a cold water bath in the sink speeds this up.",
+      "Pack the peppercorns and sliced beets into a clean jar.",
+      "Pour in the brine to cover the beets, seal, and refrigerate.",
+      "Keeps up to 6 weeks in the fridge."
+    ]
   }
 ];
 
@@ -1214,7 +1288,7 @@ function renderDetail(id){
             ${r.ingredients.map((ing, i) => `
               <li>
                 <button class="check" data-i="${i}" aria-label="Mark ${escapeAttr(ing)} as gathered"></button>
-                <span class="ing-label" data-i="${i}">${escapeHtml(ing)}</span>
+                <span class="ing-label" data-i="${i}">${renderIngredientText(ing)}</span>
               </li>
             `).join('')}
           </ul>
@@ -1432,6 +1506,19 @@ function escapeHtml(str){
   return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 function escapeAttr(str){ return escapeHtml(str); }
+
+/* An ingredient line can embed a link to another recipe on the site
+   using the syntax [[recipe-id|Visible Text]] — everything else in
+   the line is escaped and shown as plain text as usual. */
+function renderIngredientText(str){
+  const match = str.match(/\[\[([a-z0-9-]+)\|([^\]]+)\]\]/i);
+  if(!match) return escapeHtml(str);
+  const before = str.slice(0, match.index);
+  const after = str.slice(match.index + match[0].length);
+  const linkId = match[1];
+  const label = match[2];
+  return escapeHtml(before) + `<a href="#/recipe/${escapeAttr(linkId)}" class="ing-link">${escapeHtml(label)}</a>` + escapeHtml(after);
+}
 
 function route(){
   const hash = location.hash || '#/';
