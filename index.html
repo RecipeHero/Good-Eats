@@ -13,8 +13,8 @@
      RECIPE DATA lives down in the <script> tag near the bottom,
      in the section marked "ADD YOUR RECIPES HERE". Edit that array
      to add, remove, or change recipes. The "category" field for
-     each recipe must be exactly one of: Dinner, Lunch, Breakfast,
-     Desserts, Snacks, and More, Beverages.
+     each recipe must be exactly one of: Main Entrees, Side Dishes,
+     Desserts, Snacks, Sauces, and More, Beverages.
      ============================================================ */
 
   :root{
@@ -705,7 +705,7 @@
    ADD YOUR RECIPES HERE
    Copy an existing object, give it a unique "id" (no spaces),
    and fill in your own details. "category" must be exactly one
-   of: Dinner, Lunch, Breakfast, Desserts, Snacks, and More, Beverages.
+   of: Main Entrees, Side Dishes, Desserts, Snacks, Sauces, and More, Beverages.
    ============================================================ */
 
 const RECIPES = [
@@ -755,7 +755,7 @@ const RECIPES = [
   {
     id: "soft-pretzels",
     title: "Soft Pretzels",
-    category: "Desserts, Snacks, and More",
+    category: "Snacks, Sauces, and More",
     time: "1 hr 15 min",
     servings: "8",
     ingredients: [
@@ -785,7 +785,7 @@ const RECIPES = [
   {
     id: "korean-meatballs",
     title: "Korean Meatballs",
-    category: "Dinner",
+    category: "Main Entrees",
     time: "40 min",
     servings: "4",
     ingredients: [
@@ -824,7 +824,7 @@ const RECIPES = [
   {
     id: "bacon-cheddar-potato-soup",
     title: "Bacon Cheddar Potato Soup",
-    category: "Dinner",
+    category: "Main Entrees",
     time: "45 min",
     servings: "6",
     ingredients: [
@@ -857,7 +857,7 @@ const RECIPES = [
   {
     id: "chicken-bacon-ranch-pasta",
     title: "Chicken Bacon Ranch Pasta",
-    category: "Dinner",
+    category: "Main Entrees",
     time: "35 min",
     servings: "4",
     ingredients: [
@@ -888,7 +888,7 @@ const RECIPES = [
   {
     id: "nutella-pie",
     title: "Nutella Pie",
-    category: "Desserts, Snacks, and More",
+    category: "Desserts",
     time: "30 min + 4 hr chill",
     servings: "8",
     ingredients: [
@@ -909,7 +909,7 @@ const RECIPES = [
   {
     id: "buffalo-sauce",
     title: "Buffalo Sauce",
-    category: "Desserts, Snacks, and More",
+    category: "Snacks, Sauces, and More",
     time: "10 min",
     servings: "About 1 1/4 cups",
     ingredients: [
@@ -929,7 +929,7 @@ const RECIPES = [
   {
     id: "ranch-dressing",
     title: "Ranch Dressing",
-    category: "Desserts, Snacks, and More",
+    category: "Snacks, Sauces, and More",
     time: "5 min + 30 min chill",
     servings: "About 1 1/2 cups",
     ingredients: [
@@ -951,7 +951,7 @@ const RECIPES = [
   {
     id: "vinaigrette",
     title: "Vinaigrette",
-    category: "Desserts, Snacks, and More",
+    category: "Snacks, Sauces, and More",
     time: "5 min",
     servings: "About 1 cup",
     ingredients: [
@@ -969,7 +969,7 @@ const RECIPES = [
   {
     id: "french-dip-sandwiches",
     title: "French Dip Sandwiches",
-    category: "Lunch",
+    category: "Main Entrees",
     time: "20 min",
     servings: "4",
     ingredients: [
@@ -990,7 +990,7 @@ const RECIPES = [
   {
     id: "refrigerator-dill-pickles",
     title: "Refrigerator Dill Pickles",
-    category: "Desserts, Snacks, and More",
+    category: "Snacks, Sauces, and More",
     time: "30 min + 2 weeks to cure",
     servings: "About 3 quarts",
     ingredients: [
@@ -1010,6 +1010,60 @@ const RECIPES = [
       "Pack the cucumbers, dill, garlic, peppercorns, and pepper flakes into jars. Pour in enough brine to cover. Seal and refrigerate.",
       "Best flavor after at least 2 weeks; keeps 3–5 weeks beyond that."
     ]
+  },
+  {
+    id: "chicken-alfredo",
+    title: "Chicken Alfredo",
+    category: "Main Entrees",
+    time: "40 min",
+    servings: "4",
+    ingredients: [
+      "2 chicken breasts",
+      "2 eggs",
+      "1/2 cup flour",
+      "1/2 cup Italian breadcrumbs",
+      "Oil, for frying",
+      "1 box pasta of choice",
+      "1/2 cup butter",
+      "1 1/2 cups heavy cream",
+      "2 tsp minced garlic",
+      "1/2 tsp Italian seasoning",
+      "1/2 tsp salt",
+      "1/4 tsp pepper",
+      "2 cups freshly grated Parmesan"
+    ],
+    steps: [
+      "Slice each chicken breast in half horizontally and pat dry. Set up three bowls: flour, beaten eggs, and breadcrumbs. Coat each piece in flour, then egg, then breadcrumbs.",
+      "Fry in about 1/4 inch of hot oil until golden and cooked through. Slice into strips and set aside.",
+      "Cook the pasta according to the package directions; drain.",
+      "In the pasta pot, simmer the butter and cream over low heat for 2 minutes. Whisk in the garlic, Italian seasoning, salt, and pepper, then stir in most of the Parmesan until melted.",
+      "Add the pasta and chicken back in, tossing to coat. Serve topped with the remaining Parmesan."
+    ]
+  },
+  {
+    id: "dirt-pudding",
+    title: "Dirt Pudding",
+    category: "Desserts",
+    time: "30 min + overnight chill",
+    servings: "12",
+    ingredients: [
+      "3 1/2 cups whole milk",
+      "6.8 oz instant French vanilla pudding mix (2 small boxes)",
+      "28 chocolate sandwich cookies, divided",
+      "1/2 cup salted butter, softened",
+      "8 oz cream cheese, softened",
+      "1 cup powdered sugar",
+      "8 oz Cool Whip, thawed",
+      "Gummy worms (optional)"
+    ],
+    steps: [
+      "Chop 8 cookies into small pieces; crush the rest into fine crumbs. Set both aside separately.",
+      "Whisk the milk and pudding mix together and refrigerate until set.",
+      "Beat the butter and cream cheese until smooth. Add the powdered sugar and beat until combined.",
+      "Mix in the set pudding, then fold in the Cool Whip until smooth.",
+      "In a large bowl or dish, layer 2 cups of the pudding mixture, then 1/2 cup cookie crumbs and 1/4 cup chopped cookies. Repeat layers, ending with cookie crumbs on top.",
+      "Add gummy worms if desired. Chill overnight before serving."
+    ]
   }
 ];
 
@@ -1017,12 +1071,12 @@ const RECIPES = [
    Everything below this line runs the site — no need to edit it.
    ============================================================ */
 
-const CATEGORIES = ["Dinner", "Lunch", "Breakfast", "Desserts, Snacks, and More", "Beverages"];
+const CATEGORIES = ["Main Entrees", "Side Dishes", "Desserts", "Snacks, Sauces, and More", "Beverages"];
 const CATEGORY_COLORS = {
-  Dinner: "var(--rust)",
-  Lunch: "var(--butter)",
-  Breakfast: "var(--sage)",
-  "Desserts, Snacks, and More": "var(--plum)",
+  "Main Entrees": "var(--rust)",
+  "Side Dishes": "var(--sage)",
+  "Desserts": "var(--plum)",
+  "Snacks, Sauces, and More": "var(--butter)",
   Beverages: "var(--steel)"
 };
 
@@ -1202,10 +1256,10 @@ function renderDetail(id){
 
 const WHEEL_PALETTE = ['#B5482A', '#75845E', '#E9B64C', '#A15C74', '#4C7B8C', '#6B5A4C'];
 let wheelRotation = 0;
-let wheelCategory = 'All';
+let wheelCategory = 'Main Entrees';
 
 function wheelRecipes(){
-  return wheelCategory === 'All' ? RECIPES : RECIPES.filter(r => r.category === wheelCategory);
+  return RECIPES.filter(r => r.category === wheelCategory);
 }
 
 function buildWheelSvg(recipes){
@@ -1243,7 +1297,7 @@ function truncate(str, len){
 
 function renderWheel(){
   const recipes = wheelRecipes();
-  const filterOptions = ['All', ...CATEGORIES];
+  const filterOptions = ["Main Entrees", "Side Dishes"];
 
   app.innerHTML = `
     <div class="wheel-page">
@@ -1252,7 +1306,7 @@ function renderWheel(){
         Back to recipes
       </button>
       <h2>What's for dinner?</h2>
-      <p class="sub">Pick a category, or draw from everything, then give it a spin.</p>
+      <p class="sub">Choose Main Entrees or Side Dishes, then give it a spin.</p>
       <div class="wheel-filters" id="wheel-filters">
         ${filterOptions.map(c => `<button class="pill ${c === wheelCategory ? 'active' : ''}" data-cat="${escapeAttr(c)}">${escapeHtml(c)}</button>`).join('')}
       </div>
